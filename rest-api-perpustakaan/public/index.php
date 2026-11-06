@@ -1,4 +1,15 @@
 <?php
+// CORS Headers
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Accept');
+header('Access-Control-Max-Age: 86400');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Config\Env;
@@ -46,19 +57,15 @@ $router = new Router();
 $router->add('GET', '/api/books', function($req) use ($container) {
     $container->make('bookController')->index($req);
 });
-
 $router->add('POST', '/api/books', function($req) use ($container) {
     $container->make('bookController')->store($req);
 });
-
 $router->add('GET', '/api/books/{id}', function($req, $id) use ($container) {
     $container->make('bookController')->show($req, (int)$id);
 });
-
 $router->add('PUT', '/api/books/{id}', function($req, $id) use ($container) {
     $container->make('bookController')->update($req, (int)$id);
 });
-
 $router->add('DELETE', '/api/books/{id}', function($req, $id) use ($container) {
     $container->make('bookController')->destroy($req, (int)$id);
 });
@@ -67,19 +74,15 @@ $router->add('DELETE', '/api/books/{id}', function($req, $id) use ($container) {
 $router->add('GET', '/api/categories', function($req) use ($container) {
     $container->make('categoryController')->index($req);
 });
-
 $router->add('POST', '/api/categories', function($req) use ($container) {
     $container->make('categoryController')->store($req);
 });
-
 $router->add('GET', '/api/categories/{id}', function($req, $id) use ($container) {
     $container->make('categoryController')->show($req, (int)$id);
 });
-
 $router->add('PUT', '/api/categories/{id}', function($req, $id) use ($container) {
     $container->make('categoryController')->update($req, (int)$id);
 });
-
 $router->add('DELETE', '/api/categories/{id}', function($req, $id) use ($container) {
     $container->make('categoryController')->destroy($req, (int)$id);
 });
