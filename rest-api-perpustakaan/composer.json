@@ -1,0 +1,8 @@
+{
+    "name": "mahasiswa/rest-api-perpustakaan",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
