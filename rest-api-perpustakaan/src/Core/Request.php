@@ -2,6 +2,10 @@
 namespace App\Core;
 
 class Request {
+    public string $method;
+    public string $uri;
+    public array $body;
+
     public static function capture(): array {
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
