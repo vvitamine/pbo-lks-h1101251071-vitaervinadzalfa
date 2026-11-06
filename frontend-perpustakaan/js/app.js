@@ -3,7 +3,7 @@ function router() {
     
     if (hash === '#dashboard') renderDashboard();
     else if (hash === '#books') renderBooks();
-    // else if (hash === '#categories') renderCategories(); // Nanti di Langkah 19
+    else if (hash === '#categories') renderCategories(); // <-- Baris ini yang diaktifin
     else document.getElementById('app').innerHTML = '<p>Halaman tidak ditemukan.</p>';
 }
 
